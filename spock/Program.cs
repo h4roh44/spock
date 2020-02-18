@@ -22,48 +22,152 @@ namespace spock
             // Declare Variables for each game option
             //
 
-            string r = "r";
-            string p = "p";
-            string s = "s";
-            string l = "l";
-            string k = "k";
+            string rock = "rock";
+            string paper = "paper";
+            string scissors = "scissors";
+            string lizard = "lizard";
+            string spock = "spock";
 
             //
-            // Convert game number selection to an integer value.
+            // Declare input for computer and associate variables.
+            //
+
+            Random rn = new Random();
+            int aRandom = rn.Next(1, 5);
+
+            // Declare Variable for each random choice that the computer can choose.
+
+            string computerChoice;
+            if (aRandom == 1)
+            {
+                computerChoice = "r";
+            }
+            else if (aRandom == 2)
+            {
+                computerChoice = "p";
+            }
+            else if (aRandom == 3)
+            {
+                computerChoice = "s";
+            }
+            else if (aRandom == 4)
+            {
+                computerChoice = "l";
+            }
+            else
+            {
+                computerChoice = "sp";
+            }
+
+            //
+            // Convert game number selection to an integer value to be used in the first loop.
             //
 
             int GameNumSelectConv = Convert.ToInt32(GameNumSelect);
-
-            //
-            // Make variable for game selection
-            //
-
-            string onematch = "1";
-            string twomatch = "2";
-            string threematch = "3";
             
             //
-            //Match 1 if statement
+            //Match 1 loop
             //
 
-            if (GameNumSelectConv == 1)
+            while (GameNumSelectConv == 1)
             {
+                Console.Clear();
+            //
+            // Introduce Match 1 and receive user input.
+            //
             Console.Write("Match 1" + "\n" + "\n" + "Enter (r)ock, (p)aper, (s)cissors, (l)izard, or spoc(k):");
             string userChoice = Console.ReadLine();
-                
+
+                if (userChoice == "r")
+                {
+                    userChoice = rock;
+                }
+                else if (userChoice == "p")
+                {
+                    userChoice = paper;
+                }
+                else if (userChoice == "s")
+                {
+                    userChoice = scissors;
+                }
+                else if (userChoice == "l")
+                {
+                    userChoice = lizard;
+                }
+                else if (userChoice == "k")
+                {
+                    userChoice = spock;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please press any key to re-enter.");
+                }
+
+                string userChoiceLong;
+                if (computerChoice == "r")
+                {
+                    computerChoice = rock;
+                }
+                else if (computerChoice == "p")
+                {
+                    computerChoice = paper;
+                }
+                else if (computerChoice == "s")
+                {
+                    computerChoice = scissors;
+                }
+                else if (computerChoice == "l")
+                {
+                    computerChoice = lizard;
+                }
+                else
+                {
+                    computerChoice = spock;
+                }
+            //
+            // Evaluate who wins within the Match 1 loop.
+            //
+                if ((computerChoice == rock && (userChoice == scissors)) ||
+                          ((computerChoice == rock) && (userChoice == lizard)) ||
+                          ((computerChoice == scissors) && (userChoice == paper)) ||
+                          ((computerChoice == scissors) && (userChoice == lizard)) ||
+                          ((computerChoice == paper) && (userChoice == rock)) ||
+                          ((computerChoice == paper) && (userChoice == scissors)) ||
+                          ((computerChoice == lizard) && (userChoice == paper)) ||
+                          ((computerChoice == lizard) && (userChoice == scissors)) ||
+                          ((computerChoice == spock) && (userChoice == rock)) ||
+                          ((computerChoice == spock) && (userChoice == scissors)))
+                           {
+                    // Computer Wins
+                    Console.WriteLine("Computer plays " + computerChoice + ". " + "You play " + userChoice + ". " + " Computer wins.");
+                            }
+                if ((computerChoice == scissors && (userChoice == rock)) ||
+                          ((computerChoice == lizard) && (userChoice == rock)) ||
+                          ((computerChoice == paper) && (userChoice == scissors)) ||
+                          ((computerChoice == lizard) && (userChoice == scissors)) ||
+                          ((computerChoice == rock) && (userChoice == paper)) ||
+                          ((computerChoice == scissors) && (userChoice == paper)) ||
+                          ((computerChoice == paper) && (userChoice == lizard)) ||
+                          ((computerChoice == scissors) && (userChoice == lizard)) ||
+                          ((computerChoice == rock) && (userChoice == spock)) ||
+                          ((computerChoice == scissors) && (userChoice == spock)))
+                {
+                    // User Wins
+                    Console.WriteLine("Computer plays " + computerChoice + ". " + "You play " + userChoice + ". " + " You win.");
+                }
+                if ((computerChoice == scissors && (userChoice == scissors)) ||
+                          ((computerChoice == lizard) && (userChoice == lizard)) ||
+                          ((computerChoice == paper) && (userChoice == paper)) ||
+                          ((computerChoice == rock) && (userChoice == rock)) ||
+                          ((computerChoice == spock) && (userChoice == spock)))
+                {
+                    // Tie game
+                    Console.WriteLine("Computer plays " + computerChoice + ". " + "You play " + userChoice + ". " + " It is a tie.");
+                }
+                break;
+
             }
-                else if (GameNumSelect != onematch)
-                {
-                Console.WriteLine("Oops, invalid input. Please choose from 1, 3, and 5." + "\n" + "\n" + "\n" + "Press any key to continue.");
-                }
-                else if (GameNumSelect != twomatch)
-                {
-                Console.WriteLine("Oops, invalid input. Please choose from 1, 3, and 5." + "\n" + "\n" + "\n" + "Press any key to continue.");
-                }
-                else if (GameNumSelect != threematch)
-                {
-                Console.WriteLine("Oops, invalid input. Please choose from 1, 3, and 5." + "\n" + "\n" + "\n" + "Press any key to continue.");
-                }
+               
 
     
             //
